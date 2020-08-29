@@ -1,0 +1,78 @@
+<!-- Contenedor Inicio -->
+<div class="container-fluid p-3">
+    <!-- Titulo Inicio -->
+    <div class="p-3 mb-2 bg-dark text-light">
+        <h2>Ejercicio 1:  Salario Neto de Empleados</h2>
+    </div>
+    <!-- Titulo Final -->
+    
+    <!-- Inputs Inicio-->
+    
+
+    <form (ngSubmit)="calcularSalario()" #frmCalcularSalario="ngForm">
+        <div class="form-group">
+            <label>Empleado</label>
+            <input  type="text" 
+                    class="form-control" 
+                    placeholder="Juan Perez" 
+                    required 
+                    [(ngModel)]="nombre" 
+                    name="txtNombre" 
+                    id="txtNombre"
+                    #txtNombre="ngModel">
+            <small class="text-danger" [hidden]="txtNombre.valid || txtNombre.pristine">
+                Nombre es requerido
+            </small>
+        </div>
+    
+        <div class="form-group">
+            <label>Salario</label>
+            <input type="number" 
+                   class="form-control" 
+                   placeholder="$0.00" 
+                   required 
+                   [(ngModel)]="salario"
+                   name="numSalario"
+                   id="numSalario"
+                   #numSalario="ngModel">
+            <small class="text-danger" [hidden]="numSalario.valid || numSalario.pristine">
+                Salario es requerido
+            </small>
+        </div>
+        <button type="submit" class="btn btn-success"
+            [disabled]="!frmCalcularSalario.form.valid">Submit</button>
+    </form>
+
+
+    <!-- Inputs Final-->
+
+    <!-- Separador -->
+    <hr>
+    <!-- Separador -->
+
+    <!-- Tabla de Informacion Inicio-->
+    <table class="table table-stripped" [hidden]="contador == 0">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Empleado</th>
+                <th scope="col">Salario</th>
+                <th scope="col">ISSS</th>
+                <th scope="col">Renta</th>
+                <th scope="col">AFP</th>
+                <th scope="col">Salario Neto</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let empleado of empleados">
+                <td>{{empleado.nombre}}</td>
+                <td>${{empleado.salario}}</td>
+                <td>${{empleado.isss}}</td>
+                <td>${{empleado.renta}}</td>
+                <td>${{empleado.afp}}</td>
+                <td>${{empleado.salario_neto}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- Tabla de Informacion Final-->
+</div>
+<!-- Contenedor Final -->
