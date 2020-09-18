@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Alumno } from './models/alumno';
 import { ArticulosService } from './articulos.service';
-import { HttpClient } from '@angular/common/http';
 
 @Component({
 selector: 'app-root',
