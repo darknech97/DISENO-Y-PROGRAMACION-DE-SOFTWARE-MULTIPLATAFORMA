@@ -1,0 +1,35 @@
+<div class="container-fluid">
+  <div class="text-center">
+    <div class="card">
+      
+      <div class="card-header">
+        <h2>Registrarse</h2>
+      </div>
+
+      <div class="card-body pl-5 pr-5">
+        <form>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="Email Address" #userEmail required>
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Password" #userPwd required>
+          </div>
+          <div class="form-group w-50 register_buttons">
+            <div class="row">
+              <div class="col-lg-6">
+                <input type="button" class="btn btn-primary w-100 mt-1" value="Enviar" (click)="authService.SignUp(userEmail.value, userPwd.value)">
+              </div>
+              <div class="col-lg-6">
+                <button type="button" class="btn btn-success w-100 mt-1" (click)="authService.GoogleAuth()">Google</button>
+              </div>
+            </div>
+          </div>
+          
+        </form>
+
+        <a routerLink="/sign-in">Regresar</a>
+      </div>
+
+    </div>>
+  </div>
+</div>

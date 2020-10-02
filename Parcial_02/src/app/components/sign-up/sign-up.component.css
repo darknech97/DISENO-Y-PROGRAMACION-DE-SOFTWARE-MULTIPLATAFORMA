@@ -1,0 +1,9 @@
+.container-fluid{
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 50px;
+}
+
+.register_buttons{
+    margin: auto;
+}
