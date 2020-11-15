@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import EmpleadoDataService from "../services/empleado.service";
+import Swal from "sweetalert2";
 
 export default class AddTutorial extends Component {
   constructor(props) {
@@ -41,12 +42,20 @@ export default class AddTutorial extends Component {
 
     /*Validacion*/
     if(this.state.codigo == "" || this.state.nombre == "" || this.state.horas == ""){
-      alert("Por favor ingresar todos los parametros.");
+      Swal.fire({
+        icon: 'info',
+        title: 'Ups...',
+        text: 'Por favor ingresar todos los parametros.',
+      });
       return false;
     }
 
     if(this.state.horas < 0 || this.state.horas > 250){
-      alert("Las horas no pueden ser menores a 0 o mayores a 250.");
+      Swal.fire({
+        icon: 'info',
+        title: 'Ups...',
+        text: 'Las horas no pueden ser menores a 0 o mayores a 250.',
+      });
       return false;
     }
 
@@ -91,6 +100,12 @@ export default class AddTutorial extends Component {
       .catch((e) => {
         console.log(e);
       });
+
+      Swal.fire({
+        icon: 'success',
+        title: '¡Exito!',
+        text: 'El empleado ' + this.state.nombre + ' fue creado con exito.',
+      });
   }
 
   newEmpleado() {
@@ -109,7 +124,6 @@ export default class AddTutorial extends Component {
             <div className="submit-form">
         {this.state.submitted ? (
           <div>
-            <h4>¡El empleado se agrego con exito!</h4>
             <button className="btn btn-success" onClick={this.newEmpleado}>
               Agregar Nuevamente
             </button>

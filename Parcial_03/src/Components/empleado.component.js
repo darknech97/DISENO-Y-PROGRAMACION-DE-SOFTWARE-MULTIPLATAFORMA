@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TutorialDataService from "../services/empleado.service";
-import { withRouter } from 'react-router-dom';
+import Swal from "sweetalert2";
 
 export default class Tutorial extends Component {
   constructor(props) {
@@ -90,12 +90,20 @@ export default class Tutorial extends Component {
   updateTutorial() {
     /*Validacion*/
     if(this.state.currentTutorial.codigo == "" || this.state.currentTutorial.nombre == "" || this.state.currentTutorial.horas == ""){
-      alert("Por favor ingresar todos los parametros.");
+      Swal.fire({
+        icon: 'info',
+        title: 'Ups...',
+        text: 'Por favor ingresar todos los parametros.',
+      });
       return false;
     }
 
     if(this.state.currentTutorial.horas < 0 || this.state.currentTutorial.horas > 250){
-      alert("Las horas no pueden ser menores a 0 o mayores a 250.");
+      Swal.fire({
+        icon: 'info',
+        title: 'Ups...',
+        text: 'Las horas no pueden ser menores a 0 o mayores a 250.',
+      });
       return false;
     }
 
@@ -148,7 +156,11 @@ export default class Tutorial extends Component {
       this.state.currentTutorial.renta = renta;
       this.state.currentTutorial.sueldo_neto = sueldo_neto;
 
-      alert("¡El empleado " + this.state.currentTutorial.nombre + " fue actualizado con extio!");
+      Swal.fire({
+        icon: 'success',
+        title: '¡Exito!',
+        text: 'El empleado ' + this.state.currentTutorial.nombre + ' fue actualizado con extio.',
+      });
   }
 
   deleteTutorial() {
@@ -161,7 +173,12 @@ export default class Tutorial extends Component {
         console.log(e);
       });
 
-    alert("¡El empleado fue eliminado con exito!");
+
+      Swal.fire({
+        icon: 'error',
+        title: '¡Exito!',
+        text: 'El empleado fue eliminado con exito.',
+      });  
   }
 
   render() { 
